@@ -999,9 +999,9 @@ function fillFormWithValuesAndExpect(formSelector, inputValues, expected) {
 test("require_from_group", function() {
 	$("#productInfo").validate({
 		rules: {
-			partnumber: { require_from_group: [ 2,".productInfo" ] },
-			description: { require_from_group: [ 2,".productInfo" ] },
-			discount: { require_from_group: [ 2,".productInfo" ] }
+			partnumber: { require_from_group: [ 2, ".productInfo" ] },
+			description: { require_from_group: [ 2, ".productInfo" ] },
+			discount: { require_from_group: [ 2, ".productInfo" ] }
 		}
 	});
 
@@ -1018,9 +1018,9 @@ test("require_from_group", function() {
 test("require_from_group preserve other rules", function() {
 	$("#productInfo").validate({
 		rules: {
-			partnumber: { require_from_group: [ 2,".productInfo" ] },
-			description: { require_from_group: [ 2,".productInfo" ] },
-			color: { require_from_group: [ 2,".productInfo" ] },
+			partnumber: { require_from_group: [ 2, ".productInfo" ] },
+			description: { require_from_group: [ 2, ".productInfo" ] },
+			color: { require_from_group: [ 2, ".productInfo" ] },
 			supplier: { required: true }
 		}
 	});
@@ -1037,9 +1037,9 @@ test("require_from_group preserve other rules", function() {
 test("skip_or_fill_minimum", function() {
 	$("#productInfo").validate({
 		rules: {
-			partnumber:  { skip_or_fill_minimum: [ 2,".productInfo" ] },
-			description: { skip_or_fill_minimum: [ 2,".productInfo" ] },
-			color:       { skip_or_fill_minimum: [ 2,".productInfo" ] }
+			partnumber:  { skip_or_fill_minimum: [ 2, ".productInfo" ] },
+			description: { skip_or_fill_minimum: [ 2, ".productInfo" ] },
+			color:       { skip_or_fill_minimum: [ 2, ".productInfo" ] }
 		}
 	});
 
@@ -1052,9 +1052,9 @@ test("skip_or_fill_minimum", function() {
 test("skip_or_fill_minimum preserve other rules", function() {
 	$("#productInfo").validate({
 		rules: {
-			partnumber:  { skip_or_fill_minimum: [ 2,".productInfo" ] },
-			description: { skip_or_fill_minimum: [ 2,".productInfo" ] },
-			color:       { skip_or_fill_minimum: [ 2,".productInfo" ] },
+			partnumber:  { skip_or_fill_minimum: [ 2, ".productInfo" ] },
+			description: { skip_or_fill_minimum: [ 2, ".productInfo" ] },
+			color:       { skip_or_fill_minimum: [ 2, ".productInfo" ] },
 			supplier: { required: true }
 		}
 	});
@@ -1240,6 +1240,18 @@ test("postalCodeCA", function() {
 	ok( !method( "H0H 0H"), "Invalid CA Postal Code; Too Short" );
 	ok( !method( "Z0H 0H"), "Invalid CA Postal Code; Only 'ABCEGHJKLMNPRSTVXY' are valid starting characters" );
 	ok( !method( "h0h 0h0"), "Invalid CA Postal Code; Only upper case characters" );
+});
+
+test("stateUS", function() {
+	var method = methodTest("stateUS");
+	ok( method( "AZ" ), "Valid US state" );
+	ok( method( "OH" ), "Valid US state" );
+	ok( method( "DC" ), "Valid US state" );
+	ok( method( "PR", { includeTerritories: true } ), "Valid US territory" );
+	ok( method( "AA", { includeMilitary: true } ), "Valid US military zone" );
+	ok( method( "me", { caseSensitive: false } ), "Valid US state" );
+	ok(!method( "az", { caseSensitive: true } ), "Must be capital letters" );
+	ok(!method( "mp", { caseSensitive: false, includeTerritories: false } ), "US territories not allowed" );
 });
 
 })(jQuery);

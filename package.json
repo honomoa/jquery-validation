@@ -2,7 +2,7 @@
 	"name": "jquery-validation",
 	"title": "jQuery Validation Plugin",
 	"description": "Form validation made easy",
-	"version": "1.12.1pre",
+	"version": "1.13.1-pre",
 	"homepage": "http://jqueryvalidation.org/",
 	"author": {
 		"name": "Jörn Zaefferer",
@@ -36,7 +36,7 @@
 		"grunt-contrib-qunit": "0.4.0",
 		"grunt-contrib-uglify": "0.4.0",
 		"grunt-contrib-watch": "0.6.0",
-		"grunt-jscs-checker": "^0.4.4",
+		"grunt-jscs": "^0.6.1",
 		"grunt-text-replace": "0.3.11"
 	},
 	"keywords": [

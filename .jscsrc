@@ -12,13 +12,10 @@
 	"requireSpacesInAnonymousFunctionExpression": {
 		"beforeOpeningCurlyBrace": true
 	},
-	"disallowTrailingComma": true,
-	"requireMultipleVarDecl": "onevar",
-	"disallowTrailingWhitespace": true,
-	"validateQuoteMarks": "\"",
-	"requireSpacesInsideArrayBrackets": "allButNested",
 	"excludeFiles": [
 		"node_modules/**",
 		"dist/**"
-	]
+	],
+	"maximumLineLength": null,
+	"requireCamelCaseOrUpperCaseIdentifiers": null
 }
